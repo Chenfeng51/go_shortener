@@ -1,0 +1,26 @@
+{
+  "name": "Link Shortener",
+  "description": "Try shorten the url based on url shortener rule like goLinks and Copy it.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "clipboardWrite"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/url_shortener16.png",
+      "32": "/images/url_shortener32.png",
+      "48": "/images/url_shortener48.png",
+      "128": "/images/url_shortener128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/url_shortener16.png",
+    "32": "/images/url_shortener32.png",
+    "48": "/images/url_shortener48.png",
+    "128": "/images/url_shortener128.png"
+  },
+  "options_page": "options.html"
+}
