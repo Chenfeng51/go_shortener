@@ -5,13 +5,20 @@ resultLabel = document.getElementById("result");
 function rewriteUrl(url, rules) {
   for (let ind in rules) {
     console.log("rule   :" + rules[ind]);
-    let [g, uRegStr] = rules[ind];
+    let [shortUrl, uRegStr] = rules[ind];
+    // Use valid url charactors for {*}.
+    uRegStr = uRegStr.replace("{*}", "([\\w!~.-]*)");
+
     let uReg = new RegExp(uRegStr);
-    newUrl = url.replace(uReg, g);
-    console.log("rule:" + uReg);
-    console.log("result:" + newUrl);
+    newUrl = url.replace(uReg, shortUrl);
+
     if (newUrl != url) {
-      return "http://" + newUrl;
+      if (!newUrl.startsWith("http")) {
+        newUrl = "http://" + newUrl;
+      }
+      // TODO: Maybe remove trailing parameters.
+      // TODO: Maybe remove additional folders in the url.
+      return newUrl;
     }
   }
   return url;
