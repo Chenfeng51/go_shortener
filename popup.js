@@ -4,11 +4,9 @@ resultLabel = document.getElementById("result");
 
 function rewriteUrl(url, rules) {
   for (let ind in rules) {
-    console.log("rule   :" + rules[ind]);
     let [shortUrl, uRegStr] = rules[ind];
     // Use valid url charactors for {*}.
-    uRegStr = uRegStr.replace("{*}", "([\\w!~.-]*)");
-
+    uRegStr = uRegStr.replaceAll("{*}", "([\\w!~.-]*)");
     let uReg = new RegExp(uRegStr);
     newUrl = url.replace(uReg, shortUrl);
 
@@ -18,6 +16,10 @@ function rewriteUrl(url, rules) {
       }
       // TODO: Maybe remove trailing parameters.
       // TODO: Maybe remove additional folders in the url.
+      // Remove trailing /.
+      if (newUrl.endsWith("/")) {
+        newUrl = newUrl.susubstr(0, newUrl.length -1);
+      }
       return newUrl;
     }
   }

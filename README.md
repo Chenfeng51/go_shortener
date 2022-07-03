@@ -25,9 +25,13 @@ This go shortener get the current page's url and use rules to replace it if poss
 1. Each rule occupies one line in the rule area.
 2. Each rule contains 2 parts separted by a comma(,):  (short link),(long link)
 3. If there is no variable in your rule.
-  1. You can keep the long url as is, but the replacement only works when your url exactly match.
-  2. You can append .* to your long url, so any urls starts with that long url will be replaced to the short url.
+   1. You can keep the long url as is, but the replacement only works when your url exactly match.
+   2. You can append .* to your long url, so any urls starts with that long url will be replaced to the short url.
 4. If there is variables in your rule.
-  1. In the short url part, always put $1 in the url as a place holder of the variable.
-  2. You can use a capturing group to represent the variable part in the long url.
-  3. If you are not familar with capturing group, you can use {*} to represent the variable part.  
+   1. In the short url part, put each varialbe as $[number] based on how many variable the url have. For example: go/b/$1, or go/week/$1/$2/$3.
+   2. You can use a capturing group to represent the variable part in the long url.
+   3. If you are not familar with capturing group, you can use {*} to represent the variable part.  
+
+NOTE: There is a default rules already defined which based on a go link rule: 
+*  Link:   `go/week`
+*  Destination url:  `https://calendar.google.com/calendar/u/0/r/week/{*}/{*}/{*}`
