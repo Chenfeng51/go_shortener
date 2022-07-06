@@ -1,5 +1,5 @@
-# Url Shortener(by rules)
-A url shortener based on the other url shortener rules, for example, goLink rules.
+# Shorter Url (by rules)
+A url copier and rewritter based on the url shortener rules configured by the user, for example, goLink rules.
 
 
 ## Why we need this
@@ -8,20 +8,21 @@ Suppose you are using goLinks and there are some short links with variables you 
 
 ## How it works
 
-This go shortener get the current page's url and use rules to replace it if possible and copy the url to your pasteboard. 
+This extension get the current page's url and use user predefined rules to rewrite it if possible and copy the url to your pasteboard. 
 
-1. This extension will use regex to replace the long link with short link.
-2. This extension runs rules from top to bottom, and if any rule changed the url, it will stop and return the short url. Otherwise, it return the original url.
+1. This extension uses regex to replace the long link with short link.
+2. This extension runs rules from top to bottom, and if any rule changed the url, it will stop and use the shorter url. Otherwise, it uses the original url.
 
 ## How to start
 
 1. You need to clone the project to your local folder.
 2. Use chrome development mode and load this unpacked extention.
 3. Open the option of this extension, put more rules in the text area. Click save. Close it.
-4. On any tab, click on this extension, it will copy the current url, and shorten it if it matches any rules.
+4. On any tab, click on this extension, it will rewrite current url if it matches any rules and then copy the url to the pasteboard.
 
 ## Writing new rules
 
+Open options of this extension to set up your own rules.
 1. Each rule occupies one line in the rule area.
 2. Each rule contains 2 parts separted by a comma(,):  (short link),(long link)
 3. If there is no variable in your rule.
@@ -32,6 +33,10 @@ This go shortener get the current page's url and use rules to replace it if poss
    2. You can use a capturing group to represent the variable part in the long url.
    3. If you are not familar with capturing group, you can use {*} to represent the variable part.  
 
-NOTE: There is a default rules already defined which based on a go link rule: 
+## Example
+
+There is a default rules already defined which based on a go link rule: 
 *  Link:   `go/week`
 *  Destination url:  `https://calendar.google.com/calendar/u/0/r/week/{*}/{*}/{*}`
+
+When you copy a url like `https://calendar.google.com/calendar/u/0/r/week/2022/7/31`, it will be rewritten to  `http://go/week/2022/7/31`.

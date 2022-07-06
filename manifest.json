@@ -1,6 +1,6 @@
 {
-  "name": "Link Shortener",
-  "description": "Try shorten the url based on url shortener rule like goLinks and Copy it.",
+  "name": "Shorter Url",
+  "description": "Try copy the current page's url and may shorten the url based on existing url shortener's rule like goLink.",
   "version": "0.0.1",
   "manifest_version": 3,
   "background": {
@@ -26,7 +26,7 @@
   "commands": {
     "_execute_action": {
       "suggested_key": "Alt+C",
-      "description": "My first command"
+      "description": "Copy the url."
     }
   }
 }
